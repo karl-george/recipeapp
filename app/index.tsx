@@ -2,13 +2,19 @@ import CategoryList from '@/components/CategoryList';
 import FoodCard from '@/components/FoodCard';
 import { data } from '@/constants/data';
 import { useState } from 'react';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 export default function Index() {
   const [categorySelected, setCategorySelected] = useState('Breakfast');
 
   return (
-    <View className='px-4 bg-bgFaded'>
+    <ScrollView className='px-4 bg-bgFaded'>
       {/* Search Bar */}
       {/*// todo  */}
       {/* Categories */}
@@ -29,7 +35,21 @@ export default function Index() {
         <Text className='text-xl font-bold'>Recommended</Text>
       </View>
 
-      <FlatList data={data.hits} renderItem={({ item }) => <FoodCard />} />
-    </View>
+      <FlatList
+        data={data.hits}
+        contentContainerStyle={{}}
+        numColumns={2}
+        columnWrapperStyle={{ justifyContent: 'space-between' }}
+        scrollEnabled={false}
+        renderItem={({ item }) => (
+          <FoodCard
+            label={item.recipe.label}
+            image={item.recipe.images.SMALL}
+            time={item.recipe.totalTime}
+            calories={item.recipe.calories}
+          />
+        )}
+      />
+    </ScrollView>
   );
 }
