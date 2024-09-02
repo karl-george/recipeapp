@@ -7,6 +7,8 @@ module.exports = {
         gradientStart: '#EA7A22',
         gradientEnd: '#F5A150',
         faded: '#AEAAAA',
+        bgFaded: '#F6F6F6',
+        accent: '#EA7A22',
       },
     },
   },
