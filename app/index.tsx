@@ -1,6 +1,8 @@
 import CategoryList from '@/components/CategoryList';
+import FoodCard from '@/components/FoodCard';
+import { data } from '@/constants/data';
 import { useState } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, Text, TouchableOpacity, View } from 'react-native';
 
 export default function Index() {
   const [categorySelected, setCategorySelected] = useState('Breakfast');
@@ -21,8 +23,13 @@ export default function Index() {
         categorySelected={categorySelected}
         setCategorySelected={setCategorySelected}
       />
+
       {/* Recommended */}
-      {/* // todo */}
+      <View className='flex-row items-center justify-between mt-6 mb-2'>
+        <Text className='text-xl font-bold'>Recommended</Text>
+      </View>
+
+      <FlatList data={data.hits} renderItem={({ item }) => <FoodCard />} />
     </View>
   );
 }
