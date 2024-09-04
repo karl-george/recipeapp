@@ -14,9 +14,22 @@ import {
 export default function Index() {
   const [categorySelected, setCategorySelected] = useState('Breakfast');
 
+  // const fetchRecipe = async () => {
+  //   const res = await fetch(
+  //     'https://api.spoonacular.com/recipes/complexSearch?${process.env.apiKey}&type=breakfast&instructionsRequired=true&addRecipeInformation=true'
+  //   );
+
+  //   const data = await res.json();
+  //   console.log(data);
+  // };
+
+  // useEffect(() => {
+  //   fetchRecipe();
+  // }, []);
+
   return (
     <ScrollView className='px-4 bg-bgFaded'>
-      {/* Search Bar */}
+      {/* Search Ba r */}
       <SearchBar />
       {/* Categories */}
       <View className='flex-row items-center justify-between mb-2'>
@@ -37,17 +50,18 @@ export default function Index() {
       </View>
 
       <FlatList
-        data={data.hits}
+        data={data?.results}
         contentContainerStyle={{}}
         numColumns={2}
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         scrollEnabled={false}
         renderItem={({ item }) => (
           <FoodCard
-            label={item.recipe.label}
-            image={item.recipe.images.SMALL}
-            time={item.recipe.totalTime}
-            calories={item.recipe.calories}
+            id={item.id}
+            title={item.title}
+            image={item.image}
+            readyInMinutes={item.readyInMinutes}
+            likes={item.aggregateLikes}
           />
         )}
       />
