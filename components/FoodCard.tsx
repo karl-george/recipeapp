@@ -16,7 +16,6 @@ type FoodCardProps = {
 const FoodCard = ({ label, image, time, calories }: FoodCardProps) => {
   return (
     <View className='mb-4'>
-      {/* //todo add favourite icon */}
       <View className='h-[220px] w-[182px]'>
         <Image
           src={image.url}
