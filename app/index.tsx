@@ -29,7 +29,7 @@ export default function Index() {
 
   return (
     <ScrollView className='px-4 bg-bgFaded'>
-      {/* Search Ba r */}
+      {/* Search Bar */}
       <SearchBar />
       {/* Categories */}
       <View className='flex-row items-center justify-between mb-2'>
