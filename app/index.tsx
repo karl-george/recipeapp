@@ -6,13 +6,17 @@ import { useState } from 'react';
 import {
   FlatList,
   ScrollView,
+  StatusBar,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Index() {
   const [categorySelected, setCategorySelected] = useState('Breakfast');
+
+  const { top } = useSafeAreaInsets();
 
   // const fetchRecipe = async () => {
   //   const res = await fetch(
@@ -28,7 +32,8 @@ export default function Index() {
   // }, []);
 
   return (
-    <ScrollView className='px-4 bg-bgFaded'>
+    <ScrollView className='px-4 bg-bgFaded' style={{ marginTop: top + 12 }}>
+      <StatusBar backgroundColor={'#F6F6F6'} />
       {/* Search Bar */}
       <SearchBar />
       {/* Categories */}
