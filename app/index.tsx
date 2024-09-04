@@ -1,5 +1,6 @@
 import CategoryList from '@/components/CategoryList';
 import FoodCard from '@/components/FoodCard';
+import SearchBar from '@/components/SearchBar';
 import { data } from '@/constants/data';
 import { useState } from 'react';
 import {
@@ -16,7 +17,7 @@ export default function Index() {
   return (
     <ScrollView className='px-4 bg-bgFaded'>
       {/* Search Bar */}
-      {/*// todo  */}
+      <SearchBar />
       {/* Categories */}
       <View className='flex-row items-center justify-between mb-2'>
         <Text className='text-xl font-bold'>Categories</Text>
