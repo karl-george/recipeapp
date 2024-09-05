@@ -3200,7 +3200,7 @@ export const detailedRecipe = {
     'breakfast',
     'dinner',
   ],
-  diets: ['gluten free'],
+  diets: ['gluten free', 'Dairy Free'],
   occasions: [],
   instructions:
     '\u003Col\u003E\u003Cli\u003EPreheat oven to 350\u003C/li\u003E\u003Cli\u003ESpray a 10 oz oven safe dish with cooking spray\u003C/li\u003E\u003Cli\u003EAdd your butternut squash\u003C/li\u003E\u003Cli\u003EIn a measuring cup add your eggs and milk. Mix until combined. Pour over butternut squash.\u003C/li\u003E\u003Cli\u003ESprinkle with pepper and top with cheese.\u003C/li\u003E\u003Cli\u003EBake in oven for 30-35 minutes, until middle is slightly firm\u003C/li\u003E\u003Cli\u003ELet it cool for a few minutes\u003C/li\u003E\u003C/ol\u003E',
