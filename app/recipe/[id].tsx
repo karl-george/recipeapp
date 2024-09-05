@@ -1,5 +1,6 @@
 import { detailedRecipe } from '@/constants/data';
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
@@ -33,6 +34,12 @@ const RecipeDetails = () => {
             </Text>
           </View>
           <View className='flex-row items-center space-x-1'>
+            <Ionicons name='flame' size={14} color={'#EA7A22'} />
+            <Text className='text-sm text-faded'>
+              {detailedRecipe?.nutrition.nutrients[0].amount.toFixed(0)} cal
+            </Text>
+          </View>
+          <View className='flex-row items-center space-x-1'>
             <Ionicons name='people' size={14} color={'#EA7A22'} />
             <Text className='text-sm text-faded'>
               {detailedRecipe?.servings}
@@ -40,11 +47,32 @@ const RecipeDetails = () => {
           </View>
         </View>
 
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          className='flex-row space-x-2'
+        >
+          {detailedRecipe.diets.map((diet, i) => (
+            <View key={i} className='flex-row mt-4'>
+              <LinearGradient
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                colors={['#EA7A22', '#F5A150']}
+                className='items-center w-24 px-2 py-2 rounded-md'
+              >
+                <Text className='font-semibold text-white capitalize bg-transparent'>
+                  {diet}
+                </Text>
+              </LinearGradient>
+            </View>
+          ))}
+        </ScrollView>
+
         {/* Ingredients */}
         <View className='mt-6'>
           <Text className='mb-3 text-xl font-bold'>Ingredients</Text>
-          {detailedRecipe?.extendedIngredients.map((ingredient) => (
-            <View className='flex-row items-center mb-4 space-x-2'>
+          {detailedRecipe?.extendedIngredients.map((ingredient, i) => (
+            <View className='flex-row items-center mb-4 space-x-2' key={i}>
               <Image
                 src={`https://img.spoonacular.com/ingredients_100x100/${ingredient.image}`}
                 className='w-10 h-10 rounded-full'
@@ -65,8 +93,8 @@ const RecipeDetails = () => {
         {/* Instructions */}
         <View className='mt-4'>
           <Text className='mb-3 text-xl font-bold'>Instructions</Text>
-          {detailedRecipe?.analyzedInstructions[0].steps.map((step) => (
-            <View className='flex-row mb-4 space-x-2'>
+          {detailedRecipe?.analyzedInstructions[0].steps.map((step, i) => (
+            <View className='flex-row mb-4 space-x-2' key={i}>
               <Text className='text-lg'>{step.number}.</Text>
               <Text className='w-11/12 text-lg'>{step.step}</Text>
             </View>
