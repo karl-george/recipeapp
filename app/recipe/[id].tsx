@@ -100,6 +100,74 @@ const RecipeDetails = () => {
             </View>
           ))}
         </View>
+
+        {/* Nutrition Info */}
+        <View className='mt-4'>
+          <Text className='mb-3 text-xl font-bold'>Nutrition Per Serving</Text>
+          <View className='flex-row flex-1 space-x-2'>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[0].name}:
+            </Text>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[0].amount.toFixed(0)}
+              {detailedRecipe?.nutrition.nutrients[0].unit}
+            </Text>
+          </View>
+          <View className='flex-row flex-1 space-x-2'>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[1].name}:
+            </Text>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[1].amount.toFixed(0)}
+              {detailedRecipe?.nutrition.nutrients[1].unit}
+            </Text>
+          </View>
+          <View className='flex-row flex-1 space-x-2'>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[3].name}:
+            </Text>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[3].amount.toFixed(0)}
+              {detailedRecipe?.nutrition.nutrients[3].unit}
+            </Text>
+          </View>
+          <View className='flex-row flex-1 space-x-2'>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[5].name}:
+            </Text>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[5].amount.toFixed(0)}
+              {detailedRecipe?.nutrition.nutrients[5].unit}
+            </Text>
+          </View>
+          <View className='flex-row flex-1 space-x-2'>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[6].name}:
+            </Text>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[6].amount.toFixed(0)}
+              {detailedRecipe?.nutrition.nutrients[6].unit}
+            </Text>
+          </View>
+          <View className='flex-row flex-1 space-x-2'>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[7].name}:
+            </Text>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[7].amount.toFixed(0)}
+              {detailedRecipe?.nutrition.nutrients[7].unit}
+            </Text>
+          </View>
+          <View className='flex-row flex-1 mb-3 space-x-2'>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[10].name}:
+            </Text>
+            <Text className='text-lg'>
+              {detailedRecipe?.nutrition.nutrients[10].amount.toFixed(0)}
+              {detailedRecipe?.nutrition.nutrients[10].unit}
+            </Text>
+          </View>
+        </View>
       </View>
     </ScrollView>
   );
