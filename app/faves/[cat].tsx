@@ -1,8 +1,8 @@
-import { View, Text, StatusBar, FlatList, ScrollView } from 'react-native';
-import React from 'react';
-import { Stack, useLocalSearchParams } from 'expo-router';
-import { data } from '@/constants/data';
 import FoodCard from '@/components/FoodCard';
+import { data } from '@/constants/data';
+import { Stack, useLocalSearchParams } from 'expo-router';
+import React from 'react';
+import { FlatList, ScrollView, StatusBar } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const FaveCategory = () => {
