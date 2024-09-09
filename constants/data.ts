@@ -3210,7 +3210,7 @@ export const detailedRecipe = {
       steps: [
         {
           number: 1,
-          step: 'Preheat oven to 350Spray a 10 oz oven safe dish with cooking spray',
+          step: 'Preheat oven to 350 Spray a 10 oz oven safe dish with cooking spray',
           ingredients: [
             {
               id: 4679,
