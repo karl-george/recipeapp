@@ -8,9 +8,11 @@ import {
 } from 'react-native';
 import React from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useRouter } from 'expo-router';
 
 const Fave = () => {
   const { top, bottom } = useSafeAreaInsets();
+  const router = useRouter();
 
   let recipeNumber = 10;
 
@@ -27,7 +29,11 @@ const Fave = () => {
       {/* Breakfast */}
       <View className='flex-row items-center justify-between mb-2'>
         <Text className='text-lg font-bold'>Breakfast</Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            router.push('/faves/breakfast');
+          }}
+        >
           <Text className='font-semibold text-accent'>See all</Text>
         </TouchableOpacity>
       </View>
@@ -69,7 +75,11 @@ const Fave = () => {
       {/* Lunch */}
       <View className='flex-row items-center justify-between mt-6 mb-2'>
         <Text className='text-lg font-bold'>Lunch</Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            router.push('/faves/lunch');
+          }}
+        >
           <Text className='font-semibold text-accent'>See all</Text>
         </TouchableOpacity>
       </View>
@@ -112,7 +122,11 @@ const Fave = () => {
       <View className='pb-20 mb-20'>
         <View className='flex-row items-center justify-between mt-6 mb-2'>
           <Text className='text-lg font-bold'>Dinner</Text>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity
+            onPress={() => {
+              router.push('/faves/dinner');
+            }}
+          >
             <Text className='font-semibold text-accent'>See all</Text>
           </TouchableOpacity>
         </View>
