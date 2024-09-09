@@ -1,9 +1,9 @@
 import { detailedRecipe } from '@/constants/data';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   ImageBackground,
@@ -14,7 +14,11 @@ import {
 } from 'react-native';
 
 const RecipeDetails = () => {
+  const [fave, setFave] = useState(true);
+
   const { id } = useLocalSearchParams();
+
+  const router = useRouter();
 
   return (
     <ScrollView className='flex-1 w-full'>
@@ -26,11 +30,20 @@ const RecipeDetails = () => {
           resizeMode='cover'
         >
           <View className='flex-row items-center justify-between px-8 mt-16'>
-            <TouchableOpacity className='p-2 bg-white rounded-full opacity-50'>
+            {/* Back button */}
+            <TouchableOpacity
+              onPress={() => router.back()}
+              className='p-2 bg-white rounded-full opacity-50'
+            >
               <Ionicons name='chevron-back' size={26} color={'#000'} />
             </TouchableOpacity>
+            {/* Favourite button */}
             <TouchableOpacity className='p-2 bg-white rounded-full opacity-60'>
-              <Ionicons name='heart-outline' size={26} color={'#000'} />
+              {fave ? (
+                <Ionicons name='heart' size={26} color={'#ff0000'} />
+              ) : (
+                <Ionicons name='heart-outline' size={26} color={'#000'} />
+              )}
             </TouchableOpacity>
           </View>
         </ImageBackground>
