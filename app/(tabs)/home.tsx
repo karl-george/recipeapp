@@ -32,7 +32,11 @@ export default function Home() {
   // }, []);
 
   return (
-    <ScrollView className='px-4 bg-bgFaded' style={{ paddingTop: top + 24 }}>
+    <ScrollView
+      className='px-4 bg-bgFaded'
+      style={{ paddingTop: top + 24 }}
+      showsHorizontalScrollIndicator={false}
+    >
       <StatusBar backgroundColor={'#F6F6F6'} />
       {/* Search Bar */}
       <SearchBar />
