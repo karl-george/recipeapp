@@ -4,7 +4,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useLocalSearchParams } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Image, ImageBackground, ScrollView, Text, View } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 const RecipeDetails = () => {
   const { id } = useLocalSearchParams();
@@ -17,9 +24,16 @@ const RecipeDetails = () => {
           src={detailedRecipe?.image}
           className='w-full h-[300px]'
           resizeMode='cover'
-        />
-        {/* Back Button */}
-        {/* Fave Button */}
+        >
+          <View className='flex-row items-center justify-between px-8 mt-16'>
+            <TouchableOpacity className='p-2 bg-white rounded-full opacity-50'>
+              <Ionicons name='chevron-back' size={26} color={'#000'} />
+            </TouchableOpacity>
+            <TouchableOpacity className='p-2 bg-white rounded-full opacity-60'>
+              <Ionicons name='heart-outline' size={26} color={'#000'} />
+            </TouchableOpacity>
+          </View>
+        </ImageBackground>
       </View>
 
       {/* Info */}
