@@ -31,7 +31,7 @@ const Fave = () => {
         <Text className='text-lg font-bold'>Breakfast</Text>
         <TouchableOpacity
           onPress={() => {
-            router.push('/faves/breakfast');
+            router.push('/faves/Breakfast');
           }}
         >
           <Text className='font-semibold text-accent'>See all</Text>
@@ -77,7 +77,7 @@ const Fave = () => {
         <Text className='text-lg font-bold'>Lunch</Text>
         <TouchableOpacity
           onPress={() => {
-            router.push('/faves/lunch');
+            router.push('/faves/Lunch');
           }}
         >
           <Text className='font-semibold text-accent'>See all</Text>
@@ -124,7 +124,7 @@ const Fave = () => {
           <Text className='text-lg font-bold'>Dinner</Text>
           <TouchableOpacity
             onPress={() => {
-              router.push('/faves/dinner');
+              router.push('/faves/Dinner');
             }}
           >
             <Text className='font-semibold text-accent'>See all</Text>
