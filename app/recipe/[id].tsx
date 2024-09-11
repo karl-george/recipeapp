@@ -1,3 +1,4 @@
+import { useStore } from '@/store/store';
 import { Recipe } from '@/types';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -16,6 +17,8 @@ import {
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState<Recipe>();
   const [fave, setFave] = useState(true);
+
+  const toggleFavorite = useStore((state: any) => state.toggleFavorite);
 
   const { id } = useLocalSearchParams();
   const router = useRouter();
