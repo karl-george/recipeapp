@@ -1,6 +1,7 @@
 import CategoryList from '@/components/CategoryList';
 import FoodCard from '@/components/FoodCard';
 import SearchBar from '@/components/SearchBar';
+import { Recipes } from '@/types';
 import { useEffect, useState } from 'react';
 import {
   FlatList,
@@ -13,7 +14,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Home() {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState<Recipes>();
   const [categorySelected, setCategorySelected] = useState('breakfast');
 
   const { top, bottom } = useSafeAreaInsets();
@@ -24,7 +25,7 @@ export default function Home() {
     );
 
     const data = await res.json();
-    setRecipes(data.results);
+    setRecipes(data);
   };
 
   useEffect(() => {
@@ -59,12 +60,12 @@ export default function Home() {
       </View>
 
       <FlatList
-        data={recipes}
+        data={recipes?.results}
         contentContainerStyle={{ marginBottom: bottom + 128 }}
         numColumns={2}
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         scrollEnabled={false}
-        renderItem={({ item }: any) => (
+        renderItem={({ item }) => (
           <FoodCard
             id={item.id}
             title={item.title}
