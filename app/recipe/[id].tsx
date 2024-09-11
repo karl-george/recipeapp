@@ -16,9 +16,9 @@ import {
 
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState<Recipe>();
-  const [fave, setFave] = useState(true);
 
   const toggleFavorite = useStore((state: any) => state.toggleFavorite);
+  const FavoriteList = useStore((state: any) => state.FavoritesList);
 
   const { id } = useLocalSearchParams();
   const router = useRouter();
@@ -54,8 +54,11 @@ const RecipeDetails = () => {
               <Ionicons name='chevron-back' size={26} color={'#000'} />
             </TouchableOpacity>
             {/* Favourite button */}
-            <TouchableOpacity className='p-2 bg-white rounded-full opacity-60'>
-              {fave ? (
+            <TouchableOpacity
+              onPress={() => toggleFavorite(recipe?.id)}
+              className='p-2 bg-white rounded-full opacity-60'
+            >
+              {FavoriteList.includes(recipe?.id) ? (
                 <Ionicons name='heart' size={26} color={'#ff0000'} />
               ) : (
                 <Ionicons name='heart-outline' size={26} color={'#000'} />
@@ -134,7 +137,7 @@ const RecipeDetails = () => {
         {/* Instructions */}
         <View className='mt-4'>
           <Text className='mb-3 text-xl font-bold'>Instructions</Text>
-          {recipe?.analyzedInstructions[0].steps.map((step, i) => (
+          {recipe?.analyzedInstructions[0]?.steps?.map((step, i) => (
             <View className='flex-row mb-4 space-x-2' key={i}>
               <Text className='text-lg'>{step.number}.</Text>
               <Text className='w-11/12 text-lg'>{step.step}</Text>
