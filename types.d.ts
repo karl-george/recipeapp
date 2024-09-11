@@ -1,3 +1,10 @@
+export interface Recipes {
+  results: Result[];
+  offset: number;
+  number: number;
+  totalResults: number;
+}
+
 export interface Recipe {
   vegetarian: boolean;
   vegan: boolean;
@@ -37,6 +44,50 @@ export interface Recipe {
   originalId: null;
   spoonacularScore: number;
   spoonacularSourceUrl: string;
+}
+
+interface Result {
+  vegetarian: boolean;
+  vegan: boolean;
+  glutenFree: boolean;
+  dairyFree: boolean;
+  veryHealthy: boolean;
+  cheap: boolean;
+  veryPopular: boolean;
+  sustainable: boolean;
+  lowFodmap: boolean;
+  weightWatcherSmartPoints: number;
+  gaps: string;
+  preparationMinutes: null | number;
+  cookingMinutes: null | number;
+  aggregateLikes: number;
+  healthScore: number;
+  creditsText: string;
+  sourceName: string;
+  pricePerServing: number;
+  id: number;
+  title: string;
+  readyInMinutes: number;
+  servings: number;
+  sourceUrl: string;
+  image: string;
+  imageType: string;
+  summary: string;
+  cuisines: string[];
+  dishTypes: string[];
+  diets: string[];
+  occasions: string[];
+  analyzedInstructions: AnalyzedInstruction[];
+  spoonacularScore: number;
+  spoonacularSourceUrl: string;
+  license?: string;
+}
+
+interface Ingredient {
+  id: number;
+  name: string;
+  localizedName: string;
+  image: string;
 }
 
 interface AnalyzedInstruction {
