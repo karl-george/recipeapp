@@ -16,16 +16,23 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 export default function Home() {
   const [recipes, setRecipes] = useState<Recipes>();
   const [categorySelected, setCategorySelected] = useState('breakfast');
+  const [loading, setLoading] = useState(false);
 
   const { top, bottom } = useSafeAreaInsets();
 
   const fetchRecipe = async () => {
-    const res = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.apiKey}&type=${categorySelected}&instructionsRequired=true&addRecipeInformation=true`
-    );
+    try {
+      const res = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.apiKey}&type=${categorySelected}&instructionsRequired=true&addRecipeInformation=true`
+      );
 
-    const data = await res.json();
-    setRecipes(data);
+      const data = await res.json();
+      setRecipes(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
