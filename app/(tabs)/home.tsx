@@ -4,6 +4,7 @@ import SearchBar from '@/components/SearchBar';
 import { Recipes } from '@/types';
 import { useEffect, useState } from 'react';
 import {
+  ActivityIndicator,
   FlatList,
   ScrollView,
   StatusBar,
@@ -45,6 +46,7 @@ export default function Home() {
       style={{ paddingTop: top + 24 }}
       showsHorizontalScrollIndicator={false}
     >
+      {loading && <ActivityIndicator size='large' color='#F6F6F6' />}
       <StatusBar backgroundColor={'#F6F6F6'} />
       {/* Search Bar */}
       <SearchBar />
