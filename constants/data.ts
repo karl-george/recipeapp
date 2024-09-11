@@ -1,4 +1,4 @@
-export const categories = ['Breakfast', 'Lunch', 'Dinner', 'Dessert', 'Random'];
+export const categories = ['breakfast', 'lunch', 'dinner', 'dessert', 'random'];
 
 export const data = {
   results: [

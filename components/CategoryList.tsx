@@ -22,7 +22,7 @@ const CategoryList = ({ categorySelected, setCategorySelected }: any) => {
                 colors={['#EA7A22', '#F5A150']}
                 className='items-center px-5 py-3 rounded-md'
               >
-                <Text className='font-semibold text-white bg-transparent'>
+                <Text className='font-semibold text-white capitalize bg-transparent'>
                   {category}
                 </Text>
               </LinearGradient>
@@ -31,7 +31,7 @@ const CategoryList = ({ categorySelected, setCategorySelected }: any) => {
                 className='items-center px-5 py-[11px] border rounded-md border-faded'
                 onPress={() => setCategorySelected(category)}
               >
-                <Text className=' text-faded'>{category}</Text>
+                <Text className='capitalize  text-faded'>{category}</Text>
               </TouchableOpacity>
             )}
           </TouchableOpacity>
