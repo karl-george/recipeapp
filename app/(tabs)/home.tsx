@@ -2,7 +2,7 @@ import CategoryList from '@/components/CategoryList';
 import FoodCard from '@/components/FoodCard';
 import SearchBar from '@/components/SearchBar';
 import { data } from '@/constants/data';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   FlatList,
   ScrollView,
@@ -18,18 +18,18 @@ export default function Home() {
 
   const { top, bottom } = useSafeAreaInsets();
 
-  // const fetchRecipe = async () => {
-  //   const res = await fetch(
-  //     'https://api.spoonacular.com/recipes/complexSearch?${process.env.apiKey}&type=breakfast&instructionsRequired=true&addRecipeInformation=true'
-  //   );
+  const fetchRecipe = async () => {
+    const res = await fetch(
+      `https://api.spoonacular.com/recipes/complexSearch?${process.env.apiKey}&type=${categorySelected}&instructionsRequired=true&addRecipeInformation=true`
+    );
 
-  //   const data = await res.json();
-  //   console.log(data);
-  // };
+    const data = await res.json();
+    console.log(data);
+  };
 
-  // useEffect(() => {
-  //   fetchRecipe();
-  // }, []);
+  useEffect(() => {
+    fetchRecipe();
+  }, [categorySelected]);
 
   return (
     <ScrollView
