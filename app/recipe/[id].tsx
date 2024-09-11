@@ -47,7 +47,7 @@ const RecipeDetails = () => {
   return (
     <ScrollView className='flex-1 w-full'>
       <StatusBar translucent />
-      {loading && <ActivityIndicator size='large' color='#F6F6F6' />}
+      {loading && <ActivityIndicator size='large' color='#000' />}
       <View>
         <ImageBackground
           src={recipe?.image}

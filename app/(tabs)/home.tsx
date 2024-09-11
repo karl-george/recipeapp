@@ -46,8 +46,8 @@ export default function Home() {
       style={{ paddingTop: top + 24 }}
       showsHorizontalScrollIndicator={false}
     >
-      {loading && <ActivityIndicator size='large' color='#F6F6F6' />}
       <StatusBar backgroundColor={'#F6F6F6'} />
+      {loading && <ActivityIndicator size='large' color='#000' />}
       {/* Search Bar */}
       <SearchBar />
       {/* Categories */}
