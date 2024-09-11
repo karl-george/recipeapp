@@ -1,4 +1,11 @@
-export const categories = ['breakfast', 'lunch', 'dinner', 'dessert', 'random'];
+export const categories = [
+  'breakfast',
+  'lunch',
+  'main course',
+  'dessert',
+  'salad',
+  'snack',
+];
 
 export const data = {
   results: [
