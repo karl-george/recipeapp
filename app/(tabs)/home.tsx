@@ -1,7 +1,6 @@
 import CategoryList from '@/components/CategoryList';
 import FoodCard from '@/components/FoodCard';
 import SearchBar from '@/components/SearchBar';
-import { data } from '@/constants/data';
 import { useEffect, useState } from 'react';
 import {
   FlatList,
@@ -14,17 +13,18 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Home() {
-  const [categorySelected, setCategorySelected] = useState('Breakfast');
+  const [recipes, setRecipes] = useState([]);
+  const [categorySelected, setCategorySelected] = useState('breakfast');
 
   const { top, bottom } = useSafeAreaInsets();
 
   const fetchRecipe = async () => {
     const res = await fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?${process.env.apiKey}&type=${categorySelected}&instructionsRequired=true&addRecipeInformation=true`
+      `https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.apiKey}&type=${categorySelected}&instructionsRequired=true&addRecipeInformation=true`
     );
 
     const data = await res.json();
-    console.log(data);
+    setRecipes(data.results);
   };
 
   useEffect(() => {
@@ -59,12 +59,12 @@ export default function Home() {
       </View>
 
       <FlatList
-        data={data?.results}
+        data={recipes}
         contentContainerStyle={{ marginBottom: bottom + 128 }}
         numColumns={2}
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         scrollEnabled={false}
-        renderItem={({ item }) => (
+        renderItem={({ item }: any) => (
           <FoodCard
             id={item.id}
             title={item.title}
