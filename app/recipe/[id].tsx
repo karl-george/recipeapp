@@ -6,6 +6,7 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import {
+  ActivityIndicator,
   Image,
   ImageBackground,
   ScrollView,
@@ -16,6 +17,7 @@ import {
 
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState<Recipe>();
+  const [loading, setLoading] = useState(false);
 
   const toggleFavorite = useStore((state: any) => state.toggleFavorite);
   const FavoriteList = useStore((state: any) => state.FavoritesList);
@@ -24,12 +26,18 @@ const RecipeDetails = () => {
   const router = useRouter();
 
   const fetchRecipe = async () => {
-    const res = await fetch(
-      `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.apiKey}&includeNutrition=true`
-    );
+    try {
+      const res = await fetch(
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.apiKey}&includeNutrition=true`
+      );
 
-    const data = await res.json();
-    setRecipe(data);
+      const data = await res.json();
+      setRecipe(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -39,6 +47,7 @@ const RecipeDetails = () => {
   return (
     <ScrollView className='flex-1 w-full'>
       <StatusBar translucent />
+      {loading && <ActivityIndicator size='large' color='#F6F6F6' />}
       <View>
         <ImageBackground
           src={recipe?.image}
