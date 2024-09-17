@@ -33,7 +33,11 @@ const SearchBar = () => {
         value={query}
         onChangeText={(e) => setQuery(e)}
       />
-      {/* //Todo: Add a cross icon that deletes the entered text to the right side */}
+      {query.length > 0 && (
+        <TouchableOpacity onPress={() => setQuery('')}>
+          <Ionicons name='close' size={20} color={'#AEAAAA'} />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
