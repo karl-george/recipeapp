@@ -2,10 +2,10 @@ import CategoryList from '@/components/CategoryList';
 import FoodCard from '@/components/FoodCard';
 import SearchBar from '@/components/SearchBar';
 import { Recipes } from '@/types';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
   FlatList,
   ScrollView,
   StatusBar,
@@ -14,6 +14,9 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
+
+const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 
 export default function Home() {
   const [recipes, setRecipes] = useState<Recipes>();
@@ -35,13 +38,15 @@ export default function Home() {
       setRecipes(data);
     } catch (error) {
       console.log(error);
-    } finally {
-      setLoading(false);
     }
   };
 
   useEffect(() => {
+    setLoading(true);
     fetchRecipe();
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, [categorySelected]);
 
   return (
@@ -51,7 +56,6 @@ export default function Home() {
       showsHorizontalScrollIndicator={false}
     >
       <StatusBar backgroundColor={'#F6F6F6'} />
-      {loading && <ActivityIndicator size='large' color='#000' />}
       {/* Search Bar */}
       <SearchBar />
       {/* Categories */}
@@ -83,13 +87,20 @@ export default function Home() {
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         scrollEnabled={false}
         renderItem={({ item }) => (
-          <FoodCard
-            id={item.id}
-            title={item.title}
-            image={item.image}
-            readyInMinutes={item.readyInMinutes}
-            likes={item.aggregateLikes}
-          />
+          <ShimmerPlaceholder
+            visible={!loading}
+            width={182}
+            height={250}
+            shimmerStyle={{ marginVertical: 12 }}
+          >
+            <FoodCard
+              id={item.id}
+              title={item.title}
+              image={item.image}
+              readyInMinutes={item.readyInMinutes}
+              likes={item.aggregateLikes}
+            />
+          </ShimmerPlaceholder>
         )}
       />
     </ScrollView>

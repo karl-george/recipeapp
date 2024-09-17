@@ -9,6 +9,10 @@ import {
   StatusBar,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
+import { LinearGradient } from 'expo-linear-gradient';
+
+const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 
 const CategoryList = () => {
   const [recipes, setRecipes] = useState<Recipes>();
@@ -59,13 +63,20 @@ const CategoryList = () => {
         columnWrapperStyle={{ justifyContent: 'space-between' }}
         scrollEnabled={false}
         renderItem={({ item }) => (
-          <FoodCard
-            id={item.id}
-            title={item.title}
-            image={item.image}
-            readyInMinutes={item.readyInMinutes}
-            likes={item.aggregateLikes}
-          />
+          <ShimmerPlaceholder
+            visible={!loading}
+            width={182}
+            height={250}
+            shimmerStyle={{ marginVertical: 12 }}
+          >
+            <FoodCard
+              id={item.id}
+              title={item.title}
+              image={item.image}
+              readyInMinutes={item.readyInMinutes}
+              likes={item.aggregateLikes}
+            />
+          </ShimmerPlaceholder>
         )}
       />
     </ScrollView>

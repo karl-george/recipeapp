@@ -12,6 +12,10 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { LinearGradient } from 'expo-linear-gradient';
+import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
+
+const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 
 const Search = () => {
   const [recipes, setRecipes] = useState<Recipes>();
@@ -72,13 +76,20 @@ const Search = () => {
             columnWrapperStyle={{ justifyContent: 'space-between' }}
             scrollEnabled={false}
             renderItem={({ item }) => (
-              <FoodCard
-                id={item.id}
-                title={item.title}
-                image={item.image}
-                readyInMinutes={item.readyInMinutes}
-                likes={item.aggregateLikes}
-              />
+              <ShimmerPlaceholder
+                visible={!loading}
+                width={182}
+                height={250}
+                shimmerStyle={{ marginVertical: 12 }}
+              >
+                <FoodCard
+                  id={item.id}
+                  title={item.title}
+                  image={item.image}
+                  readyInMinutes={item.readyInMinutes}
+                  likes={item.aggregateLikes}
+                />
+              </ShimmerPlaceholder>
             )}
           />
         </View>
