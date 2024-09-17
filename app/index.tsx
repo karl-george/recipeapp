@@ -8,12 +8,26 @@ export default function Index() {
   return (
     <View className='bg-[#DDEFE3] w-full h-full'>
       <View className='w-full h-full'>
+        {/* Image */}
         <Image
           source={require('@/assets/images/start-img.jpg')}
           resizeMode='cover'
-          className='w-full h-4/6'
+          className='w-full h-[60%]'
         />
-        <View className='items-center justify-center'>
+        {/* Text */}
+        <View className='space-y-3'>
+          <Text className='text-4xl font-bold text-center text-accent'>
+            Find Your
+          </Text>
+          <Text className='text-4xl font-bold text-center text-accent'>
+            Perfect Recipes
+          </Text>
+          <Text className='text-4xl font-bold text-center text-accent'>
+            Today
+          </Text>
+        </View>
+        {/* Button */}
+        <View className='items-center justify-center mt-20'>
           <TouchableOpacity onPress={() => router.push('/(tabs)/home')}>
             <LinearGradient
               start={{ x: 0, y: 0 }}
