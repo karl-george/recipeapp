@@ -14,9 +14,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { createShimmerPlaceholder } from 'react-native-shimmer-placeholder';
-
-const ShimmerPlaceholder = createShimmerPlaceholder(LinearGradient);
 
 const RecipeDetails = () => {
   const [recipe, setRecipe] = useState<Recipe>();
