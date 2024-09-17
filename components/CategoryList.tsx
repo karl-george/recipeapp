@@ -31,7 +31,7 @@ const CategoryList = ({ categorySelected, setCategorySelected }: any) => {
                 className='items-center px-5 py-[11px] border rounded-md border-faded'
                 onPress={() => setCategorySelected(category)}
               >
-                <Text className='capitalize  text-faded'>{category}</Text>
+                <Text className='capitalize text-faded'>{category}</Text>
               </TouchableOpacity>
             )}
           </TouchableOpacity>
