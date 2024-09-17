@@ -2,6 +2,7 @@ import CategoryList from '@/components/CategoryList';
 import FoodCard from '@/components/FoodCard';
 import SearchBar from '@/components/SearchBar';
 import { Recipes } from '@/types';
+import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -16,9 +17,12 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function Home() {
   const [recipes, setRecipes] = useState<Recipes>();
-  const [categorySelected, setCategorySelected] = useState('breakfast');
+  const [categorySelected, setCategorySelected] = useState<string>(
+    '' || 'breakfast'
+  );
   const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
   const { top, bottom } = useSafeAreaInsets();
 
   const fetchRecipe = async () => {
@@ -53,7 +57,11 @@ export default function Home() {
       {/* Categories */}
       <View className='flex-row items-center justify-between mb-2'>
         <Text className='text-xl font-bold'>Categories</Text>
-        <TouchableOpacity onPress={() => {}}>
+        <TouchableOpacity
+          onPress={() => {
+            router.push(`/category/${categorySelected}`);
+          }}
+        >
           <Text className='font-semibold text-accent'>See all</Text>
         </TouchableOpacity>
       </View>
