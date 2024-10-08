@@ -1,13 +1,25 @@
 import FoodCard from '@/components/FoodCard';
 import { data } from '@/constants/data';
+import { useStore } from '@/store/store';
 import { Stack, useLocalSearchParams } from 'expo-router';
 import React from 'react';
-import { FlatList, ScrollView, StatusBar } from 'react-native';
+import {
+  FlatList,
+  ScrollView,
+  StatusBar,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const FaveCategory = () => {
   const { cat } = useLocalSearchParams();
   const { top, bottom } = useSafeAreaInsets();
+
+  const FavoriteList = useStore((state: any) => state.FavoritesList);
+  const resetStore = useStore((state: any) => state.resetStore);
+
+  // console.log('faves', FavoriteList);
 
   return (
     <ScrollView
@@ -23,6 +35,10 @@ const FaveCategory = () => {
         }}
       />
       <StatusBar backgroundColor={'#F6F6F6'} />
+
+      <TouchableOpacity onPress={() => resetStore()}>
+        <Text>Reset</Text>
+      </TouchableOpacity>
 
       <FlatList
         data={data?.results}

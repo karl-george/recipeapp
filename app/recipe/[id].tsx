@@ -46,8 +46,21 @@ const RecipeDetails = () => {
     }, 1000);
   }, [id]);
 
+  const loopList = () => {
+    console.log(FavoriteList.length);
+    FavoriteList.map((item: Recipe) => {
+      console.log('itemid', item.id, 'recipe', recipe?.id);
+    });
+    console.log('here');
+  };
+
+  const toggleFave = (recipe: Recipe) => {
+    console.log('toggle');
+    toggleFavorite(recipe);
+  };
+
   return (
-    <ScrollView className='flex-1 w-full'>
+    <ScrollView className='flex-1 w-full bg-bgFaded'>
       <StatusBar translucent />
       {loading ? (
         <ActivityIndicator
@@ -75,14 +88,17 @@ const RecipeDetails = () => {
                 </TouchableOpacity>
                 {/* Favourite button */}
                 <TouchableOpacity
-                  onPress={() => toggleFavorite(recipe?.id)}
+                  onPress={() => toggleFave(recipe!)}
                   className='p-2 bg-white rounded-full opacity-60'
                 >
                   {FavoriteList.includes(recipe?.id) ? (
-                    <Ionicons name='heart' size={26} color={'#ff0000'} />
+                    <Ionicons name='heart' size={26} color={'#EA7A22'} />
                   ) : (
                     <Ionicons name='heart-outline' size={26} color={'#000'} />
                   )}
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => loopList()}>
+                  <Ionicons name='warning' size={26} color={'#000'} />
                 </TouchableOpacity>
               </View>
             </ImageBackground>
@@ -102,7 +118,7 @@ const RecipeDetails = () => {
               <View className='flex-row items-center space-x-1'>
                 <Ionicons name='flame' size={14} color={'#EA7A22'} />
                 <Text className='text-sm text-faded'>
-                  {recipe?.nutrition.nutrients[0].amount.toFixed(0)} cal
+                  {recipe?.nutrition?.nutrients[0].amount.toFixed(0)} cal
                 </Text>
               </View>
               <View className='flex-row items-center space-x-1'>
@@ -116,7 +132,7 @@ const RecipeDetails = () => {
               showsHorizontalScrollIndicator={false}
               className='flex-row space-x-2'
             >
-              {recipe?.diets.map((diet, i) => (
+              {recipe?.diets?.map((diet, i) => (
                 <View key={i} className='flex-row mt-4'>
                   <LinearGradient
                     start={{ x: 0, y: 0 }}
@@ -135,7 +151,7 @@ const RecipeDetails = () => {
             {/* Ingredients */}
             <View className='mt-6'>
               <Text className='mb-3 text-xl font-bold'>Ingredients</Text>
-              {recipe?.extendedIngredients.map((ingredient, i) => (
+              {recipe?.extendedIngredients?.map((ingredient, i) => (
                 <View className='flex-row items-center mb-4 space-x-2' key={i}>
                   <Image
                     src={`https://img.spoonacular.com/ingredients_100x100/${ingredient.image}`}
